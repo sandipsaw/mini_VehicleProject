@@ -8,7 +8,7 @@ const Vehicle = () => {
     <VehicleCrad vehicle={vehicle} key={vehicle.id} />
   ))
   return (
-    <div className='flex pl-4 flex-wrap mt-2 w-screen gap-5 item-center just'>{renderdata}</div>
+    <div className='flex pl-5 flex-wrap mt-2 w-screen gap-5 item-center just'>{renderdata}</div>
   )
 }
 

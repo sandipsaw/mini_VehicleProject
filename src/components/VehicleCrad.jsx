@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom'
 const VehicleCrad = (props) => {
     const { id, image, Cname, name, speed, Seat, desc, amt } = props.vehicle
     return (
-        <Link to={`/vehicle/detail/${id}`} className='hover:scale-105 transition-transform duration-300 w-78 p-2 bg-gray-800 rounded shadow-amber-950 text-white'>
+        <Link to={`/vehicle/detail/${id}`} className='hover:scale-105 transition-transform duration-300 w-80 p-2 bg-gray-800 rounded shadow-amber-950 text-white'>
             <div className='relative'>
-                <img className='w-74 h-50' src={image} />
+                <img className='w-76 h-50' src={image} />
                 <div className='text-black text-lg font-bold absolute top-1 left-2'>{Cname}</div>
             </div>
             <div className='pt-3 flex flex-wrap gap-2 justify-around mb-1 font-semibold'>

@@ -22,7 +22,7 @@ const Create = () => {
   return (
     <div className='flex justify-between'>
 
-      <form onSubmit={handleSubmit(submitHandlet)} className='flex flex-col pl-10 pr-10 pt-2 bg-gray-500 w-200'>
+      <form onSubmit={handleSubmit(submitHandlet)} className='flex flex-col pt-5 pb-5 pl-10 pr-10 bg-gray-500 w-190'>
         <div><label className='text-xl'>Enter Vehicle Name : </label>
           <input
             className='text-xl outline-none mb-2'
@@ -115,7 +115,7 @@ const Create = () => {
           placeholder='Enter the url of image' />🚑🚕...</div>
         <div><button className='border rounded px-10 py-2 bg-gray-800 border-gray-800 mt-2' >Create Vehicle</button></div>
       </form>
-      <div><img className='w-500 h-150  object-cover object-bottom' src={vehicle}></img></div>
+      <div><img className='w-500 h-160  object-cover object-bottom' src={vehicle}></img></div>
     </div>
   )
 }
