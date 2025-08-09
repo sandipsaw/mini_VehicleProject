@@ -14,6 +14,7 @@ const Create = () => {
     const copydata = [...data];
     copydata.push(vehicle)
     setdata(copydata)
+    localStorage.setItem("vehicle",JSON.stringify(copydata))
     reset();
     toast.success('Vehicle Created')
     navigate('/vehicle')

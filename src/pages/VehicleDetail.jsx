@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
+import { useEffect } from 'react'
 
 const VehicleDetail = () => {
     const [data, setdata] = useContext(vehiclecontext)
@@ -16,23 +17,30 @@ const VehicleDetail = () => {
     })
     const { register, handleSubmit } = useForm({
         defaultValues: {
-            name: vehicle.name,
-            Cname:vehicle.Cname,
-            Seat:vehicle.Seat,
-            mileage:vehicle.mileage,
-            amt:vehicle.amt,
-            image:vehicle.image,
-            desc:vehicle.desc,
-            mob_No:vehicle.mob_No,
-            speed:vehicle.speed,
-            engine:vehicle.engine,
-            fuel:vehicle.fuel,
-            type:vehicle.type
+            name: vehicle?.name,
+            Cname: vehicle?.Cname,
+            Seat: vehicle?.Seat,
+            mileage: vehicle?.mileage,
+            amt: vehicle?.amt,
+            image: vehicle?.image,
+            desc: vehicle?.desc,
+            mob_No: vehicle?.mob_No,
+            speed: vehicle?.speed,
+            engine: vehicle?.engine,
+            fuel: vehicle?.fuel,
+            type: vehicle?.type
         }
     });
-  
 
-    const submitHandlet = (vehicle) => {
+    useEffect(() => {
+        console.log("VehicleDetail.jsx mounted");
+
+        return () => {
+            console.log("VehicleDetail.jsx Unmounted");
+        }
+    }, [])
+
+    const UpdateHandlet = (vehicle) => {
         const index = data.findIndex((vehicle) => {
             return (
                 vehicle.id == params.id
@@ -42,11 +50,15 @@ const VehicleDetail = () => {
         copydata[index] = { ...copydata[index], ...vehicle };
         console.log(copydata[index]);
         setdata(copydata);
+        localStorage.setItem("vehicle", JSON.stringify(copydata))
+
         toast.success("Vehicle Updated")
     }
     const deleteHandler = () => {
         const filterData = data.filter((vehicle) => vehicle.id != params.id);
         setdata(filterData)
+        localStorage.setItem("vehicle", JSON.stringify(filterData))
+
         toast.success("Vehicle Deleted")
         navigate('/vehicle')
     }
@@ -85,7 +97,7 @@ const VehicleDetail = () => {
             <hr />
 
 
-            <form onSubmit={handleSubmit(submitHandlet)} className='grid grid-cols-2 border pt-5 pb-5 pl-10 pr-10 bg-gray-500 w-screen'>
+            <form onSubmit={handleSubmit(UpdateHandlet)} className='grid grid-cols-2 border pt-5 pb-5 pl-10 pr-10 bg-gray-500 w-screen'>
                 <div><label className='text-xl text-gray-800 font-semibold'>Enter Vehicle Name : </label>
                     <input
 
